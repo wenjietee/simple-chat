@@ -5,6 +5,8 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
+
+// STATIC
 app.use(express.static('public'));
 
 // CONFIG
@@ -16,10 +18,10 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-	console.log('a user has connected...');
-});
+	console.log('a user connected...');
+  });
 
 // LISTEN
-app.listen(PORT, () => {
+server.listen(PORT, () => {
 	console.log(`simple-chat listening on port: ${PORT}`);
 });
